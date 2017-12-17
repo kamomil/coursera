@@ -16,6 +16,13 @@ def lcm(numbers):
 
 
 def main(args):
+
+"""
+input should be a list of either triples 'preiod,execution-time,deadline' or pairs 'period,execution-time'.
+For pairs it is implied that the deadline equals the period.
+example:
+python3 largest_frame.py "15,1,14" "20,2,26" "22,3"
+"""
     tasks = []
     periods = []
     for a in args[1:]:
