@@ -15,25 +15,28 @@ def lcm(numbers):
     return  (numbers[0]*lcm(numbers[1:])) /  gcd (numbers[0] , lcm(numbers[1:]))
 
 
+
+#input should be a list of either triples 'preiod,execution-time,deadline' or pairs 'period,execution-time'.
+#For pairs it is implied that the deadline equals the period.
+#example:
+#python3 largest_frame.py "15,1,14" "20,2,26" "22,3"
+
+
 def main(args):
 
-"""
-input should be a list of either triples 'preiod,execution-time,deadline' or pairs 'period,execution-time'.
-For pairs it is implied that the deadline equals the period.
-example:
-python3 largest_frame.py "15,1,14" "20,2,26" "22,3"
-"""
+
     tasks = []
     periods = []
     for a in args[1:]:
-        print(a.split(","))
-        task = list(map(int,a.split(",")))
+        #print(a.split(","))
+        task = list(map(float,a.split(",")))
         periods.append(task[0])
         if(len(task) == 2):
             task.append(task[0])
         task = tuple(task)
         tasks.append(task)
 
+    periods = list(map(int,periods))
     H = int(lcm(periods))
     print("H = %d" % H)
     for f in divisorGenerator(H,max(periods)):
