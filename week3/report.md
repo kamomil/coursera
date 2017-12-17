@@ -178,21 +178,31 @@ f=3 solves requirement 2
 ###  Input the tasks T1(2, 0.5), T2(3, 1.2), T3(6, 0.5) with RM scheduler
 
 * What is the utilization factor of the system and what is the value for Urm(3) ?
+
 Utilization =  0.5/2 + 1.2/3 + 0.5/6 = 0.25 + 0.4 + 0.0833 = 0.733
-Urm(3) = 3(2^(1/3) - 1) = 0.78 
+
+Urm(3) = 3(2^(1/3) - 1) = 0.78
 
 * What is the minimum/maximum/average response time of all tasks?
+
 my calc:
+
 t1: max: 0.5 min: 0.5 avg: 0.5
+
 t2: max: 1.7 min: 1.7 avg: 1.7
+
 t2: max: 2.7 min: 2.7 avg: 2.7
 
 simso:
+
 t1: max: 0.5 min: 0.5 avg: 0.5
+
 t2: max: 1.7 min: 1.7 avg: 1.7
+
 t2: max: 2.7 min: 2.7 avg: 2.7
 
 * Is any task missing the deadline? Which task? Where?
+
 No task is missing
 
 * If a deadline is missed, could it be avoided by changing the scheduler?
@@ -200,19 +210,28 @@ No task is missing
 ### Input the tasks T1(2, 0.5, 1.9) T2(5, 2) T3(1, 0.1, 0.5) T4(10, 5, 20) with EDF scheduler
 
 * What is the utilization factor of the system and what is the value for Urm(4)
+
 U = 0.5/2 + 2/5 + 0.1/1 + 5/10 = 0.25 + 0.4 + 0.1 + 0.5 = = 1.25
+
 urm(4) = 0.757
 
 * What is the minimum/maximum/average response time of all tasks?
+
 my_calc:
+
 t1: max: 0.6 min: 0.6 avg: 0.6
+
 t2: max: 3.6 min: 2.8 avg: 3.2
+
 t3: max: 0.1 min: 0.1 avg: 0.1
+
 t4: misses deadline
 
 * Is any task missing the deadline? Which task? Where?
+
 t4
 
 * If a deadline is missed, could it be avoided by changing the scheduler?
+
 no, because the utilization is larger than 1
 
