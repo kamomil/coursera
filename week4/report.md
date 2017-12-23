@@ -60,3 +60,32 @@ Since it's not accepted at all, it has no response time.
 * Which scheduler is better is better in this example; EDF or RM?
 
 Since the RM is not feasible, the EDF is better.
+
+# Programming assignment
+
+The following questions should be solved with programming and the questions should be answered in a report:
+
+* Is the system fast enough to handle all aperiodic tasks? Why?
+
+No, once a certain aperiodic task finishes it deletes the task currently assigned to `aperiodic_handle` which is the last aperiodic task created.
+
+* If not, solve this problem without alter the functionality of any task
+
+My solution was to set the `aperiodic_handle` variable to the current running task pxCurrentTCB in the macro `traceTASK_SWITCHED_IN`
+
+* What is the response time of the aperiodic task?
+
+task 1:  963817 ms          
+taks 2:  1072289 ms
+taks 3:  1053179 ms
+taks 4:  1083579 ms
+taks 5:  1102515 ms
+taks 6:  1107074 ms
+taks 7:  1075665 ms
+taks 8:  1097103 ms
+taks 9:  1084937 ms
+taks 10: 1053580 ms
+
+
+* Provide a screenshot of the running system
+

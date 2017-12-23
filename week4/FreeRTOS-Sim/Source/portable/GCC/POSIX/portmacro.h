@@ -96,7 +96,12 @@ extern void vPortExitCritical( void );
 #define portOUTPUT_BYTE( a, b )
 
 extern void vPortForciblyEndThread( void *pxTaskToDelete );
-#define traceTASK_DELETE( pxTaskToDelete )		vPortForciblyEndThread( pxTaskToDelete )
+
+#define traceTASK_DELETE( pxTaskToDelete )         \
+        portDOUBLE time = 1000.0 * ( (portDOUBLE) xTaskGetTickCountFromISR())/( (portDOUBLE) configTICK_RATE_HZ); \
+        printf("task %p deleted %f ms after vTaskStartScheduler was called\n",pxTaskToDelete,time); \
+        vPortForciblyEndThread( pxTaskToDelete );
+
 
 extern void vPortAddTaskHandle( void *pxTaskHandle );
 #define traceTASK_CREATE( pxNewTCB )			vPortAddTaskHandle( pxNewTCB )

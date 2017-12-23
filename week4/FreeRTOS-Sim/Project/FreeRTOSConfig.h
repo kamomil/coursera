@@ -97,22 +97,14 @@ volatile uint16_t mat_ticks;
 
 #endif
 
-/*
-#define traceTASK_DELAY()                                   \
-  do{                                                       \
-    if( !strcmp(pxCurrentTCB->pcTaskName,COMM_NAME)){       \
-      comm_delay++;                                         \
-      if(comm_delay % 2 == 0){                              \
-        uint32_t t = xTaskGetTickCountFromISR();            \
-        comm_ticks_per_iter = t - comm_ticks;               \
-        comm_ticks = t;                                     \
-      }                                                     \
-    }                                                       \
-    else if( !strcmp(pxCurrentTCB->pcTaskName,MAT_NAME) ){  \
-      uint32_t t = xTaskGetTickCountFromISR();              \
-      mat_ticks_per_iter = t - mat_ticks;                   \
-      mat_ticks = t;                                        \
-    }                                                       \
+volatile void* aperiodic_handle;
+
+#define traceTASK_SWITCHED_IN() aperiodic_handle = pxCurrentTCB;
+
+#define traceTASK_DELETE(xTask)                                         \
+  do{                                                                   \
+    portDOUBLE time = 1000.0 * ( (portDOUBLE) xTaskGetTickCountFromISR())/( (portDOUBLE) configTICK_RATE_HZ); \
+    printf("task %p deleted %f ms after vTaskStartScheduler was called\n",xTask,time); \
   }while(0);
-*/
+
 #endif /* FREERTOS_CONFIG_H */

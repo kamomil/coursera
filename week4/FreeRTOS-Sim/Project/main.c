@@ -1,10 +1,8 @@
-
-
 #include "FreeRTOS.h"
 #include "task.h"
 #include "timers.h"
+
 TaskHandle_t matrix_handle = NULL;
-TaskHandle_t communication_handle = NULL;
 
 
 /*
@@ -21,11 +19,6 @@ void vApplicationTickHook( void );
 /*-----------------------------------------------------------*/
 
 void vTimerCallback(TimerHandle_t pxTimer);
-
-typedef struct {
-	char symbol;
-	unsigned long delay;
-} TaskParams;
 
 #define SIZE 10
 #define ROW SIZE
@@ -79,8 +72,6 @@ static void matrix_task()
 	}
 }
 
-static TaskHandle_t aperiodic_handle;
-
 static void aperiodic_task()
 {
 	printf("Aperiodic task started!\n");
@@ -94,10 +85,17 @@ static void aperiodic_task()
 
 /* A variable to hold a count of the number of times the timer expires. */
 long lExpireCounters = 0;
+
 void vTimerCallback(TimerHandle_t pxTimer)
 {
+	TaskHandle_t pxCreatedTask;
+
 	printf("Timer callback!\n");
-	xTaskCreate((pdTASK_CODE)aperiodic_task, (char *)"Aperiodic", configMINIMAL_STACK_SIZE, NULL, 2, &aperiodic_handle);
+	xTaskCreate((pdTASK_CODE)aperiodic_task, (char *)"Aperiodic", configMINIMAL_STACK_SIZE, NULL, 2, &pxCreatedTask);
+
+	portDOUBLE time = 1000.0 * ( (portDOUBLE) xTaskGetTickCountFromISR())/( (portDOUBLE) configTICK_RATE_HZ);
+
+	printf("task %p created %f ms after vTaskStartScheduler was called\n",pxCreatedTask,time);
 	long lArrayIndex;
 	const long xMaxExpiryCountBeforeStopping = 10;
 	/* Optionally do something if the pxTimer parameter is NULL. */
@@ -111,12 +109,7 @@ void vTimerCallback(TimerHandle_t pxTimer)
 		xTimerStop(pxTimer, 0);
 	}
 }
-
 int main ( void ) {
-
-	comm_delay = 0;
-	comm_ticks_per_iter = 0;
-	comm_ticks = 0;
 
 	/*priority 3*/
 	//low priority numbers are low priority task
