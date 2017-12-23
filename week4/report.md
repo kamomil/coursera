@@ -75,15 +75,24 @@ My solution was to set the `aperiodic_handle` variable to the current running ta
 
 * What is the response time of the aperiodic task?
 
-task 1:  963817 ms          
+task 1:  963817 ms
+
 taks 2:  1072289 ms
+
 taks 3:  1053179 ms
+
 taks 4:  1083579 ms
+
 taks 5:  1102515 ms
+
 taks 6:  1107074 ms
+
 taks 7:  1075665 ms
+
 taks 8:  1097103 ms
+
 taks 9:  1084937 ms
+
 taks 10: 1053580 ms
 
 
