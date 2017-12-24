@@ -8,12 +8,18 @@ from simso.schedulers import scheduler
 @scheduler("simso.schedulers.P_RM")
 class P_RM(PartitionedScheduler):
     def init(self):
-        PartitionedScheduler.init(
-            self, SchedulerInfo("simso.schedulers.RM_mono"))
+        PartitionedScheduler.init(self, SchedulerInfo("simso.schedulers.RM_mono"))
+        self.log_file1 = open('/home/dafna/rm_log1.txt','w')
+        self.log_file2 = open('/home/dafna/rm_log2.txt','w')
+        self.log_file2.write("asdasdfsdf sdfdsfsd asdfasdf asdf asdf")
+        self.log_file2.close()
+        fdsfs dfdsfsd
 
     def packer(self):
         # First Fit
         cpus = [[cpu, 0] for cpu in self.processors]
+        self.log_file1.write("packer dafna");
+        self.log_file1.write(cpus)
         for task in self.task_list:
             m = cpus[0][1]
             j = 0
