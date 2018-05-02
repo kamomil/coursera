@@ -1,0 +1,53 @@
+dafna@guri:~/real-time-systems-coursera/week4/FreeRTOS-Sim$ ./FreeRTOS-Sim 
+Running as PID: 9349
+Timer Resolution for Run TimeStats is 100 ticks per second.
+Timer callback!
+task 0xf5a00578 created 5000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a00780 created 10000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a00978 created 15000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a00b70 created 20000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a00d68 created 25000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a00f60 created 30000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a01158 created 35000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a01350 created 40000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a01548 created 45000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Timer callback!
+task 0xf5a01740 created 50000.000000 ms after vTaskStartScheduler was called
+Aperiodic task started!
+Aperiodic task done!
+task 0xf5a00578 deleted 968817.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a00978 deleted 1068179.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a00780 deleted 1082289.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a00b70 deleted 1103579.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a01740 deleted 1103580.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a01158 deleted 1110665.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a00d68 deleted 1127515.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a01548 deleted 1129937.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a00f60 deleted 1137074.000000 ms after vTaskStartScheduler was called
+Aperiodic task done!
+task 0xf5a01350 deleted 1137103.000000 ms after vTaskStartScheduler was called

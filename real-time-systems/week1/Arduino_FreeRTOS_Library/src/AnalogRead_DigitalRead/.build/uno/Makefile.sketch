@@ -1,0 +1,14 @@
+
+
+
+
+
+.build/uno/src/AnalogRead_DigitalRead.cpp : src/AnalogRead_DigitalRead.ino
+	@mkdir -p .build/uno/src
+	@echo [93msrc/AnalogRead_DigitalRead.ino[0m
+	@/home/dafna/.local/bin/ino preproc  -o $@ $^
+
+
+all : .build/uno/src/AnalogRead_DigitalRead.cpp
+	@true
+
