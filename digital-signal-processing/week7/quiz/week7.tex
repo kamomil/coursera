@@ -1,0 +1,122 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+
+\title{Digital Signal Processing - week7 quiz solutions}
+
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+Select the correct statement among the ones below:
+
+\subsection{} 
+\begin{enumerate}
+\item A signal that is $\Omega_N$-bandlimited is also $\Omega_M$-bandlimited if $\Omega_M \ge \Omega_N$
+\item This is obviously true
+\end{enumerate}
+
+\subsection{}
+\begin{enumerate}
+\item An interpolated discrete-time signal is always bandlimited.
+\item false: for example pice-wise interpolation is not bandlimited 
+\end{enumerate}
+
+\subsection{}
+\begin{enumerate}
+\item The total energy of a continuous time signal is always infinite.
+\item false, I think $\frac{1}{x}$ is a counter example since the integral of $\frac{1}{x^2}$ I think it's finite
+\end{enumerate}
+
+\subsection{}
+\begin{enumerate}
+\item In continuous time, the only measure of frequency is Hertz (i.e. 1/seconds)
+\item false: in lecture 5.1 b they say it can also be measured in radians/sec
+\end{enumerate}
+
+\subsection{}
+\begin{enumerate}
+\item In continuous time, there is always a maximum frequency $\Omega$
+\item nope
+\end{enumerate}
+
+\section{Question 2}
+Easy to calc that it is $u(t+0.5) - u(t-0.5)$
+
+\section{Question 4}
+An important thing to note is that there are two similar formulas regarding the FT
+of $rect$, one is with the frequencies in hertz , and one the frequency measure in rad/sec.
+We are interested in the later.
+This was solved in the homework excersice:
+
+$$I(t) = 2rect(2t)\star rect(2t)$$
+$$FT\{rect(t)\} = \frac{sin(\frac{\Omega}{2})}{\frac{\Omega}{2}} = sinc(\frac{\Omega}{2\pi})$$
+$$ \Rightarrow I(j\Omega) = (2 * \frac{1}{2} \frac{sin(\frac{\Omega}{4})}{\frac{\Omega}{4}})^2 = \frac{1}{2}sinc(\frac{\Omega}{4\pi}) $$
+
+\section{Question 5}
+Was also solved in the homework
+
+\section{Question 6}
+When using a first-order interpolator (such as the one described in the previous question) to interpolate a finite-support sequence, which of the following statements are true?
+
+\begin{enumerate}
+\item The interpolated signal is bandlimited. - previous question shows that the interpolated signal
+is a $sinc^2$ with intervals of 0 - so it is {\bf NOT} bandlimited
+
+\item The interpolated signal has finite length in time because of the limited support of the interpolating function $I(t)$ - I think it's true, if the kernels are all finite support and the signal is finite support
+then the interpolation must also be finite support. (Though it is not clear if a finite support also
+means the the signal is finite or just that is infinite but is zero outside an interval
+
+\item The spectrum between $[-\Omega_N,\Omega_N]$ (the baseband) is distorted by the non-flat response of the interpolating function over the baseband.- This is true, it is describe in quiestion 5(c) in the homework
+
+\item The periodic copies of $X(e^{j \pi \frac{\Omega}{\Omega_N}})$ outside of $[-\Omega_N,\Omega_N]$
+are not eliminated by the interpolation filter, since it is not an ideal lowpass. - Indeed and 
+this is also shown in question 5 in the homework
+\end{enumerate}
+
+
+\section{Question 7}
+Select the correct statement(s).
+\begin{enumerate}
+\item Increasing the interpolation interval, $T_S$ results in a wider spectrum of the interpolated signal. -
+This is false, see lect 5.3.a
+\item The sampling theorem implies that the space of bandlimited functions is a Hilbert Space.
+- nope
+\item The sampling of a bandlimited signal $x(t)$ (with maximum frequency $F_N$) with a sampling frequency $F_S \ge 2 \cdot F_N$ will result in no information loss. - This is it
+\end{enumerate}
+
+\section{Question 10}
+This signal is $2\Omega_0$-bandlimited so it is enough to sample it in rate $T_s \le \frac{\pi}{2\Omega_0}$
+
+\section{Question 11}
+Assume $x(t)$ is a continuous-time pure sinusoid at 10 kHz. The signal is raw-sampled at 8 kHz and then interpolated back to a continuous-time signal with an interpolator at 8 kHz. What is the perceived frequency in kHz of the interpolated sinusoid?
+\newline
+\newline
+We have $x(t) = sin(10^4 2\pi t)$ and we sample it every $\frac{1}{8*10^3}$ seconds so we have 
+$$x[n] = x(\frac{1}{8*10^3}n) = sin(\frac{10^4 2\pi}{8*10^3}n) = sin(\frac{5}{4}2\pi n) = sin(2.5 \pi n) = sin(\frac{\pi}{2}n)$$
+The DTFT of this $sin$ is two $\delta$ pulses at $\frac{\pi}{2}$ and $-\frac{\pi}{2}$.
+
+From lecture 5.3.a we know that the spectrum of an interpolated signal is the same as it's DTFT but
+scaled by $\frac{\Omega_N}{\pi}$. In our case $\Omega_N = 8*10^3*2\pi$ so the frequency of the interpolated signal is $\frac{\pi}{2} * \frac{\Omega_N}{\pi} = \frac{\Omega_N}{2} = 4*10^3*2\pi(rad/sec)$ and so in hertz it is  $4 * 10^3$ which is 4 KHz
+
+\section{Question 13}
+We can count 20 times in the plot
+
+\section{Question 14-19}
+TBD
+
+\end{document}
